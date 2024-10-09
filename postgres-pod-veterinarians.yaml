@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: postgres-veterinarians
+  name: postgres-veterinarians
+spec:
+  containers:
+  - env:
+    - name: POSTGRES_USER
+      value: petclinic
+    - name: POSTGRES_PASSWORD
+      value: petclinic
+    - name: POSTGRES_DB
+      value: petclinic
+    image: postgres:17.0
+    name: postgres
+    ports:
+    - containerPort: 5432
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always

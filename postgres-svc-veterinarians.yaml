@@ -1,0 +1,9 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: postgres-service-veterinarians
+spec:
+  selector:
+    run: postgres-veterinarians
+  ports:
+  - port: 5432

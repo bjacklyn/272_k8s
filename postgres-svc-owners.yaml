@@ -1,0 +1,9 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: postgres-service-owners
+spec:
+  selector:
+    run: postgres-owners
+  ports:
+  - port: 5432

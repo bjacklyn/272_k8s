@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: spring-petclinic-service-default
+  name: spring-petclinic-service-default
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    run: spring-petclinic-default
+  type: ClusterIP

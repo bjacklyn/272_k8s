@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: spring-petclinic-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+#    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - pathType: ImplementationSpecific
+        path: /
+        backend:
+          service:
+            name: spring-petclinic-service-default
+            port:
+              number: 8080
+      - pathType: ImplementationSpecific
+        path: /owners(.*)(/|$)(.*)
+        backend:
+          service:
+            name: spring-petclinic-service-owners
+            port:
+              number: 8080
+      - pathType: ImplementationSpecific
+        path: /vets(.*)(/|$)(.*)
+        backend:
+          service:
+            name: spring-petclinic-service-veterinarians
+            port:
+              number: 8080
